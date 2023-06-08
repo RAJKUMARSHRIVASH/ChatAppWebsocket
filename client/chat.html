@@ -13,7 +13,7 @@
 <body>
     <h1>Please have a chat with you friends</h1>
     <form id="socket">
-        <p id="allmsg"></p>
+        <ul id="allmsg"></ul>
         <input type="text" placeholder="enter message & press enter" name="message">
         <input type="submit" value="Send">
     </form>
@@ -55,7 +55,13 @@
             socket.emit('chat message', message);
             inputMessage.value = '';
         }
-    });
 
+    });
+    // Handle received messages
+    socket.on('chat message', (msg) => {
+        const li = document.createElement('li');
+        li.textContent = msg;
+        messagesList.appendChild(li);
+    });
 
 </script>
