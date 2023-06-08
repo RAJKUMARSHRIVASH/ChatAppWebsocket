@@ -14,7 +14,7 @@
     <h1>Please have a chat with you friends</h1>
     <form id="socket">
         <ul id="allmsg"></ul>
-        <input type="text" placeholder="enter message & press enter" name="message">
+        <input type="text" placeholder="enter message & press enter" name="message" id="inputMessage">
         <input type="submit" value="Send">
     </form>
 
@@ -43,6 +43,7 @@
     });
 
     const chatForm = document.getElementById('socket');
+    const inputMessage = document.getElementById('inputMessage');
     const messagesList = document.getElementById('allmsg');
 
     // Handle form submission
