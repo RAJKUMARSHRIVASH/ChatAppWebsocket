@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat page</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <h1>Please have a chat with you friends</h1>
+    <form id="socket">
+        <p id="allmsg"></p>
+        <input type="text" placeholder="enter message & press enter" name="message">
+        <input type="submit" value="Send">
+    </form>
+
+</body>
+
+</html>
+<script type="module">
+    import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+</script>
+<script>
+
+    // const baseURL = "http://localhost:8000"
+    const baseURL = "https://chatapp-websocket.onrender.com"
+
+    import { io } from "socket.io-client";
+
+    // const socket = io("ws://localhost:3000");
+    const socket = io();
+
+    // send a message to the server
+    socket.emit("hello from client", 5, "6", { 7: Uint8Array.from([8]) });
+
+    // receive a message from the server
+    socket.on("hello from server", (...args) => {
+        // ...
+    });
+
+    const chatForm = document.getElementById('socket');
+    const messagesList = document.getElementById('allmsg');
+
+    // Handle form submission
+    chatForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const message = event.target.message.value.trim();
+
+        if (message !== '') {
+            // Emit the message event to the server
+            socket.emit('chat message', message);
+            inputMessage.value = '';
+        }
+    });
+
+
+</script>

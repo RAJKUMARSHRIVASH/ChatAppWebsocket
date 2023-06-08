@@ -1,0 +1,22 @@
+body {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#socket {
+    border: 1px solid silver;
+    border-radius: 20px;
+    margin: auto;
+    height: 50vh;
+    width: 30%;
+}
+
+#socket p {
+    border: 1px solid silver;
+    border-radius: 20px;
+    margin: auto;
+    height: 45vh;
+    margin-top: 10px;
+    width: 80%;
+}
